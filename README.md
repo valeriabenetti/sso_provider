@@ -94,3 +94,5 @@ http://localhost:3000
 
 #### Notes
 This is my first time using OAuth, I am not 100% certain I am going in the the right path or if I should scrap and restart. 
+
+Trying my hand on this in Elixir: https://github.com/valeriabenetti/hello
