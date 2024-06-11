@@ -74,9 +74,9 @@ http://localhost:3000
 3. *TODO* Use the Proof of Concept application (sso_consumer) to test the SSO provider integration. 
 
 ### Current Status
-- Devise Setup: Implemented user authentication with Devise, including password reset callbacks.
+- Devise Setup: Should be able to implement user authentication with Devise, including password reset callbacks.
 
-- Doorkeeper Setup: Configured Doorkeeper for OAuth2 protocol.
+- Doorkeeper Setup: Configured Doorkeeper for OAuth2 protocol?
 
 - SSO Provider Logic: Implemented Sessions controller and OAuth controller for authentication flows.
 
