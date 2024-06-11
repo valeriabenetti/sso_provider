@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :validatable
 
-  before_password_reset :invalidate_sessions_before_password_reset
-  after_password_reset :invalidate_sessions_after_password_reset
+  before_reset_password :invalidate_sessions_before_password_reset
+  after_reset_password :invalidate_sessions_after_password_reset
 
   private
 

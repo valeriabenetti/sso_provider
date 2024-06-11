@@ -1,4 +1,3 @@
-# spec/models/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -9,7 +8,7 @@ RSpec.describe User, type: :model do
       user.save!
 
       # Simulate password reset
-      user.update(password: 'new_password', password_confirmation: 'new_password')
+      user.send_reset_password_instructions
 
       expect(user.invalidate_sessions_at).not_to be_nil
     end
