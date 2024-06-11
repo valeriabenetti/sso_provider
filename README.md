@@ -1,6 +1,6 @@
 # SSO Provider with OAuth2 Implementation
 ### Overview
-This project aims to create a Single Sign-On (SSO) provider using OAuth2 protocol, allowing multiple applications to authenticate users with a single username and password. The project includes a Proof of Concept application (sso_consumer) to demonstrate integration with the SSO provider.
+This project aims to create a Single Sign-On (SSO) provider using OAuth2 protocol, allowing multiple applications to authenticate users with a single username and password. The project should include a Proof of Concept application (sso_consumer) to demonstrate integration with the SSO provider.
 
 ### Requirements
 - Ruby on Rails 
@@ -91,3 +91,6 @@ http://localhost:3000
 3. Enhance the Proof of Concept application (sso_consumer) to demonstrate various scenarios.
 
 4. Refactor code for better readability and maintainability.
+
+#### Notes
+This is my first time using OAuth, I am not 100% certain I am going in the the right path or if I should scrap and restart. 
