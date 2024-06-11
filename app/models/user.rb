@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :validatable
 
-  # Add callbacks for password reset
   before_password_reset :invalidate_sessions_before_password_reset
   after_password_reset :invalidate_sessions_after_password_reset
 
@@ -19,6 +18,6 @@ class User < ApplicationRecord
 
   def invalidate_all_sessions
     # Code to invalidate all user sessions
-    self.update_column(:invalidate_sessions_at, Time.current)
+    update_column(:invalidate_sessions_at, Time.current)
   end
 end
