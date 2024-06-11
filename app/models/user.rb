@@ -1,23 +1,17 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :recoverable, :validatable
+  # Assuming Devise is used for authentication
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
-  before_reset_password :invalidate_sessions_before_password_reset
-  after_reset_password :invalidate_sessions_after_password_reset
-
-  private
-
+  has_secure_password
+  
+  # Custom method to invalidate sessions
   def invalidate_sessions_before_password_reset
-    # Invalidate sessions before password reset
-    invalidate_all_sessions
+    # Your logic to invalidate sessions
   end
 
-  def invalidate_sessions_after_password_reset
-    # Invalidate sessions after password reset
-    invalidate_all_sessions
-  end
-
-  def invalidate_all_sessions
-    # Code to invalidate all user sessions
-    update_column(:invalidate_sessions_at, Time.current)
+  # Override Devise's method to include custom action
+  def reset_password(new_password, new_password_confirmation)
+    invalidate_sessions_before_password_reset
+    super
   end
 end
