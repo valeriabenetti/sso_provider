@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :confirmable, :validatable
 
   has_many :access_grants, class_name: 'Doorkeeper::AccessGrant', foreign_key: :resource_owner_id, dependent: :destroy
   has_many :access_tokens, class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id, dependent: :destroy
