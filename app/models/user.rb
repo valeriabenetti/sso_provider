@@ -1,15 +1,24 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :confirmable, :validatable
+  devise :database_authenticatable, :recoverable, :validatable
 
-  has_many :access_grants, class_name: 'Doorkeeper::AccessGrant', foreign_key: :resource_owner_id, dependent: :destroy
-  has_many :access_tokens, class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id, dependent: :destroy
+  # Add callbacks for password reset
+  before_password_reset :invalidate_sessions_before_password_reset
+  after_password_reset :invalidate_sessions_after_password_reset
 
-  def generate_access_token
-    Doorkeeper::AccessToken.create!(resource_owner_id: id).token
+  private
+
+  def invalidate_sessions_before_password_reset
+    # Invalidate sessions before password reset
+    invalidate_all_sessions
   end
 
-  def revoke_tokens!
-    access_tokens.update_all(revoked_at: Time.current)
+  def invalidate_sessions_after_password_reset
+    # Invalidate sessions after password reset
+    invalidate_all_sessions
+  end
+
+  def invalidate_all_sessions
+    # Code to invalidate all user sessions
+    self.update_column(:invalidate_sessions_at, Time.current)
   end
 end
